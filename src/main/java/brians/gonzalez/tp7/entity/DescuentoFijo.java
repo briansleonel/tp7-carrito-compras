@@ -1,38 +1,24 @@
 package brians.gonzalez.tp7.entity;
 
-import java.time.LocalDate;
-
 public class DescuentoFijo extends Descuento {
-	private double monto;
 
 	public DescuentoFijo() {
 	}
 
-	public DescuentoFijo(double monto) {
-		super();
-		this.monto = monto;
-	}
-
-	public DescuentoFijo(LocalDate comienzo, LocalDate fin) {
-		super(comienzo, fin);
+	public DescuentoFijo(double valorDescuento) {
+		super(valorDescuento);
 	}
 
 	@Override
-	public double descuento(double base) {
-		return monto;
+	public double valorDescuento(double precioBase) {
+		// TODO Auto-generated method stub
+		return this.getValorDescuento();
 	}
 
 	@Override
-	public String tipoDescuento() {
-		return "fijo de " + monto;
-	}
-
-	public double getMonto() {
-		return monto;
-	}
-
-	public void setMonto(double monto) {
-		this.monto = monto;
+	public double precioDescuento(double precioBase) {
+		// TODO Auto-generated method stub
+		return precioBase - this.getValorDescuento();
 	}
 
 }

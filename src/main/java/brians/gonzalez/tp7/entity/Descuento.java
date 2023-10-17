@@ -1,38 +1,26 @@
 package brians.gonzalez.tp7.entity;
 
-import java.time.LocalDate;
-
 public abstract class Descuento {
-	private LocalDate comienzo;
-	private LocalDate fin;
+	private double valorDescuento;
 
 	public Descuento() {
 		super();
 	}
 
-	public Descuento(LocalDate comienzo, LocalDate fin) {
+	public Descuento(double valorDescuento) {
 		super();
-		this.comienzo = comienzo;
-		this.fin = fin;
+		this.valorDescuento = valorDescuento;
 	}
 
-	public abstract double descuento(double base);
+	public abstract double valorDescuento(double precioBase);
 
-	public abstract String tipoDescuento();
+	public abstract double precioDescuento(double precioBase);
 
-	public LocalDate getComienzo() {
-		return comienzo;
+	public double getValorDescuento() {
+		return valorDescuento;
 	}
 
-	public void setComienzo(LocalDate comienzo) {
-		this.comienzo = comienzo;
-	}
-
-	public LocalDate getFin() {
-		return fin;
-	}
-
-	public void setFin(LocalDate fin) {
-		this.fin = fin;
+	public void setValorDescuento(double valor) {
+		this.valorDescuento = valor;
 	}
 }

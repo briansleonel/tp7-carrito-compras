@@ -46,7 +46,6 @@ public class App {
 						+ item.getProducto().getNombre());
 			}
 			System.out.println("\nPrecio: " + carrito.precio(desc));
-			System.out.println("Tipo descuento: " + carrito.getTipoDescuento());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -6,7 +6,6 @@ import java.util.List;
 public class Carrito {
 	private LocalDate fecha;
 	private List<ItemCarrito> itemsCarrito;
-	private String tipoDescuento;
 
 	public Carrito() {
 	}
@@ -24,9 +23,20 @@ public class Carrito {
 			total += item.precio();
 		}
 
-		tipoDescuento = descuento.tipoDescuento();
+		return total - descuento.valorDescuento(total);
+	}
 
-		return total - descuento.descuento(total);
+	public Double getCostoFinal() {
+		Double costoFinal = 0.0; // variable de acumulación
+		for (ItemCarrito item : itemsCarrito) {
+			costoFinal += item.precio();
+		}
+
+		return costoFinal;
+	}
+
+	public Double getCostoFinal(Descuento desc) {
+		return desc.precioDescuento(this.getCostoFinal());
 	}
 
 	public LocalDate getFecha() {
@@ -43,13 +53,5 @@ public class Carrito {
 
 	public void setItemsCarrito(List<ItemCarrito> itemsCarrito) {
 		this.itemsCarrito = itemsCarrito;
-	}
-
-	public String getTipoDescuento() {
-		return tipoDescuento;
-	}
-
-	public void setTipoDescuento(String tipoDescuento) {
-		this.tipoDescuento = tipoDescuento;
 	}
 }

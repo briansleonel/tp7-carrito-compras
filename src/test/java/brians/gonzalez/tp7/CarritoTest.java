@@ -58,25 +58,26 @@ public class CarritoTest extends TestCase {
 
 		Descuento desc = new SinDescuento();
 
-		assertEquals(270.0, carrito.precio(desc));
+		assertEquals(270.0, carrito.getCostoFinal(desc));
 	}
 
 	@Test
 	public void testMetodoPrecioDelCarritoConDescuentoPorPorcentaje() {
 		cargarCarrito();
 
-		Descuento desc = new DescuentoPorPorcentaje(0.2);
+		Descuento desc = new DescuentoPorPorcentaje();
+		desc.setValorDescuento(0.2); // Descuento del 20%
 
-		assertEquals(216.0, carrito.precio(desc));
+		assertEquals(216.0, carrito.getCostoFinal(desc));
 	}
 
 	@Test
 	public void testMetodoPrecioDelCarritoConDescuentoFijo() {
 		cargarCarrito();
 
-		Descuento desc = new DescuentoFijo(43.6);
-
-		assertEquals(226.4, carrito.precio(desc));
+		Descuento desc = new DescuentoFijo();
+		desc.setValorDescuento(43.6);
+		assertEquals(226.4, carrito.getCostoFinal(desc));
 	}
 
 	@Test
@@ -85,7 +86,7 @@ public class CarritoTest extends TestCase {
 
 		Descuento desc = new DescuentoPorcentajeConTope(0.2, 60);
 
-		assertEquals(216.0, carrito.precio(desc));
+		assertEquals(216.0, carrito.getCostoFinal(desc));
 	}
 
 	@Test
@@ -94,6 +95,6 @@ public class CarritoTest extends TestCase {
 
 		Descuento desc = new DescuentoPorcentajeConTope(0.2, 43.6);
 
-		assertEquals(226.4, carrito.precio(desc));
+		assertEquals(226.4, carrito.getCostoFinal(desc));
 	}
 }

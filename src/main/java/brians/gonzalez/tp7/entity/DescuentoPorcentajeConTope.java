@@ -9,6 +9,11 @@ public class DescuentoPorcentajeConTope extends Descuento {
 		super();
 	}
 
+	public DescuentoPorcentajeConTope(double valorDescuento) {
+		super(valorDescuento);
+		// TODO Auto-generated constructor stub
+	}
+
 	public DescuentoPorcentajeConTope(Double porcentaje, double monto) {
 		super();
 		this.porcentaje = porcentaje;
@@ -16,10 +21,10 @@ public class DescuentoPorcentajeConTope extends Descuento {
 	}
 
 	@Override
-	public double descuento(double base) {
-		double descuentoPorcentaje = porcentaje * base;
-		System.out.println("Desc %: " + descuentoPorcentaje);
-		System.out.println("Desc F: " + monto);
+	public double valorDescuento(double precioBase) {
+		double descuentoPorcentaje = porcentaje * precioBase;
+		// System.out.println("Desc %: " + descuentoPorcentaje);
+		// System.out.println("Desc F: " + monto);
 		if (descuentoPorcentaje > monto)
 			return monto;
 		else
@@ -27,8 +32,12 @@ public class DescuentoPorcentajeConTope extends Descuento {
 	}
 
 	@Override
-	public String tipoDescuento() {
-		return "descuento porcentaje con tope";
+	public double precioDescuento(double precioBase) {
+		double descuentoPorcentaje = porcentaje * precioBase;
+		if (descuentoPorcentaje > monto)
+			return precioBase - monto;
+		else
+			return precioBase - descuentoPorcentaje;
 	}
 
 	public Double getPorcentaje() {

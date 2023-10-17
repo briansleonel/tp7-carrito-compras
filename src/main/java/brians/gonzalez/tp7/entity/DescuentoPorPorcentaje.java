@@ -1,43 +1,25 @@
 package brians.gonzalez.tp7.entity;
 
-import java.time.LocalDate;
-
 public class DescuentoPorPorcentaje extends Descuento {
 
-	private Double porcentaje;
-
 	public DescuentoPorPorcentaje() {
-	}
-
-	public DescuentoPorPorcentaje(Double porcentaje) {
 		super();
-		this.porcentaje = porcentaje;
 	}
 
-	public DescuentoPorPorcentaje(LocalDate comienzo, LocalDate fin) {
-		super(comienzo, fin);
-	}
-
-	public DescuentoPorPorcentaje(LocalDate comienzo, LocalDate fin, Double porcentaje) {
-		super(comienzo, fin);
-		this.porcentaje = porcentaje;
+	public DescuentoPorPorcentaje(double valorDescuento) {
+		super(valorDescuento);
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public double descuento(double base) {
-		return porcentaje * base;
+	public double valorDescuento(double precioBase) {
+		// TODO Auto-generated method stub
+		return precioBase * this.getValorDescuento();
 	}
 
 	@Override
-	public String tipoDescuento() {
-		return "descuento del " + porcentaje * 100 + "%";
+	public double precioDescuento(double precioBase) {
+		return precioBase - (precioBase * this.getValorDescuento());
 	}
 
-	public Double getPorcentaje() {
-		return porcentaje;
-	}
-
-	public void setPorcentaje(Double porcentaje) {
-		this.porcentaje = porcentaje;
-	}
 }
